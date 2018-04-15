@@ -2,7 +2,7 @@
 
 var Alexa = require("alexa-sdk");
 
-const HELP_MESSAGE = 'Ask me your questions about birth control pills. You could try saying, I missed a pill, or does the pill protect against STIs?';
+const HELP_MESSAGE = 'This skill can help answer your questions about birth control pills, and can even debunk myths about birth control pills. Say "Ask Pill Pal", followed by your question. For example, Ask Pill Pal how do i delay my period? You could also try saying, I missed a pill, or, debunk a myth';
 const HELP_REPROMPT = 'What can I help you with?';
 const SKILL_NAME = 'Pill Pal';
 const GET_FACT_MESSAGE = "Here's a myth about birth control: ";
