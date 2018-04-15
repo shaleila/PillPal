@@ -2,9 +2,48 @@
 
 var Alexa = require("alexa-sdk");
 
+const HELP_MESSAGE = 'Ask me your questions about birth control pills. You could try saying, I missed a pill, or does the pill protect against STIs?';
+const HELP_REPROMPT = 'What can I help you with?';
+const SKILL_NAME = 'Pill Pal';
+const GET_FACT_MESSAGE = "Here's a myth about birth control: ";
+
+const data = [
+    "MYTH: You can't get pregnant if you're on birth control. TRUTH: No form of birth control is 100% effective. The pill is realistically about 91% effective, and pregnancy is still possible no matter what type of contraception you use.",
+    "MYTH: Hormonal birth control is toxic and unnatural. TRUTH: All types of hormonal birth control have real risks worth discussing with your gynecologist. But for a lot of women, the benefits of hormonal birth control easily outweigh those risks. The type and amount of hormones in each method varies, so the one you choose should be a very individual decision. And if you want or need to go hormone-free, you can try the copper IUD or condoms.",
+    "MYTH: The pill makes you gain tons of weight. TRUTH: A large review from 2014 didn't find sufficient evidence that birth control pills or patches cause weight gain, though a 2009 study did find that people using the birth control shot typically gain weight. Of course, some people gain weight and some people lose weight while taking the pill, but there's not enough evidence to blame it on the birth control.",
+    "MYTH: Being on birth control too long can mess with your fertility. TRUTH: There's no research to suggest that birth control itself can impact your future fertility, says Dweck. Some people have trouble getting pregnant after taking it for 20 years because of increased age — if you're 40 when you stop the pill, then you'll probably have a harder time getting pregnant. And if you went on birth control to deal with irregular cycles or a condition like PCOS or endometriosis, those issues could return once you stop birth control, and they can also impact your fertility,",
+    "MYTH: You should really take a break from birth control every once in a while. TRUTH: You should only take a break if you want to get pregnant. There's no medical reason to take a break from your birth control method if you're in good health and having no problems with it, even if you're not having sex right now. In fact, stopping and starting may actually put you at risk for introductory side effects all over again. The only exception is the birth control shot, which is only recommended for use up to two years.",
+    "MYTH: Blood clots are usually caused by birth control. TRUTH: Your risk of getting a blood clot while on birth control is actually lower than your risk of getting one while pregnant or just after giving birth. Yes, being on birth control can raise your risk, but only from a 0.04% chance to a 0.18% chance. Still, birth control isn't the main cause of blood clots. That said, if you have other risk factors (like a personal or family history of blood clots, smoking, obesity, high blood pressure, cardiovascular disease, etc.) then definitely talk to your doctor about which birth control method would be best for you. They may recommend an IUD or condoms, which won't raise your risk.",
+    "MYTH: People over 35 can't be on the pill. TRUTH: They absolutely can as long as they don't have any other factors that would put them at a higher risk of blood clots. But if you're also a smoker, are obese, have a personal or family history of blood clots, have high blood pressure, or other medical factors, you should not be on the pill. If you have breast cancer or a history of breast cancer, this might mean you can't use estrogen-containing birth control.",
+    "MYTH: The pill causes cancer. TRUTH: Not only does the pill NOT cause cancer, using the pill actually decreases the risk of certain types of cancer. Taking birth control pills doesn’t cause breast cancer or brain cancer, and your chances of developing ovarian cancer, uterine cancer, and colon cancer are actually lower if you’ve taken the pill in the past. Cervical cancer rates are higher among women who use the pill, but it’s likely because the HPV virus that causes cervical cancer is more common in people having unprotected sex—and so is using birth control.",
+    "MYTH: The pill always affects your mood, or even your personality. TRUTH: Most people report either no change or a slightly more positive mood after starting the pill. In fact, for women who report severe mood swings with the natural rise and fall of their monthly hormones, the pill is sometimes prescribed as treatment. On the other hand, certain hormonal birth control methods may cause a slight increase in depression. The bottom line is that you know your body best. Especially if you have a history of mood disorders like depression or anxiety, it’s important to keep an eye on your mood symptoms when taking the pill. If you don’t like how you feel with your birth control method, don’t settle. Even a different formulation of the pill could work better for you, so feel free to talk with your provider about trying different options.",
+    "MYTH: The pill causes abortions. TRUTH: Not only do birth control pills not cause abortion, they don’t even affect a developing fetus if taken by a pregnant woman. A pregnancy that’s already established won’t be harmed or aborted by taking the pill.",
+];
+
 var handlers = {
   'LaunchRequest': function() {
     this.response.speak("Hello, and welcome to Pill Pal. I can help answer some questions you may have about birth control pills. What can I help you with today?").listen("Ask me your questions about birth control pills. You could try saying, I missed a pill, or does the pill protect against STIs?");
+    this.emit(':responseReady');
+  },
+
+    'DebunkMythIntent': function () {
+        const factArr = data;
+        const factIndex = Math.floor(Math.random() * factArr.length);
+        const randomFact = factArr[factIndex];
+        const speechOutput = GET_FACT_MESSAGE + randomFact;
+
+        this.response.cardRenderer(SKILL_NAME, randomFact);
+        this.response.speak(speechOutput);
+        this.emit(':responseReady');
+    },
+
+  'EffectivenessIntent': function () {
+    this.response.speak("When used perfectly, taken every day at the same time, the pill is 99% effective. But when it comes to real life, the pill is about 91% effective because it can be hard to be perfect. The better you are about taking your pill every day and starting your pill packs on time, the better it will work. But there’s a very small chance that you could still get pregnant, even if you always take your pills correctly.");
+    this.emit(':responseReady');
+  },
+  
+    'OtherPurposesIntent': function () {
+    this.response.speak("More than half of women who take birth control pills do so for reasons other than avoiding pregnancy. It can make your periods more regular and lighter, too. The pill lowers heavy blood loss leading to anemia by thinning the lining of your uterus. Birth control can quell painful crampsand ease dysmenorrhea, iwhich affects up to 90% of reproductive-age women. Birth control pills with the hormone drospirenone can ease symptoms of PMS. They can also treat menstrual migraines, and improve acne and excess hair growth. They also ease endometriosis, and can help with polycystic ovarian syndrome.");
     this.emit(':responseReady');
   },
 
@@ -29,7 +68,7 @@ var handlers = {
   },
   
       'PregnancyDamageIntent': function () {
-    this.response.speak("");
+    this.response.speak("According to the U.S. Food and Drug Administration (FDA), there is no evidence that taking combination birth control pills or progestin-only pills while pregnant will harm your baby in any way, either by increasing the risk of birth defects or causing pregnancy complications. That said, it is not recommended that you continue taking birth control if you that you are pregnant. All substances consumed reach the fetus as well. So if you think you may be pregnant, take a pregnancy test to know for certain.");
     this.emit(':responseReady');
   },
   
@@ -39,9 +78,42 @@ var handlers = {
   },
   
       'AntibioticsIntent': function () {
-    this.response.speak("");
+    this.response.speak("You can take nearly any antibiotic you’ve been prescribed and your birth control pill will keep protecting you. Only one antibiotic is known to make the pill less effective. That is rifampin, a special medication used to treat tuberculosis. Brand names for it include Rifadin and Rimactane. Other antibiotics do not make the pill less effective. However, there are medications that can interact with the pill and decrease its effectiveness. Also, the pill can decrease or increase the effectiveness of some medications.Always let providers know about all the rescription, over-the-counter, recreational drugs and medications you take before they prescribe anything new for you.");
     this.emit(':responseReady');
   },
+    
+      'TimezoneIntent': function () {
+    this.response.speak("Calculate the time it is at your destination when you typically take your pill. Remember to account for daylight savings time. If it’s easier, you can change your scheduled time, as long as you don’t go more than 24 hours between pills. Use a time zone chart and an alarm to make sure you are taking your pill at the right time throughout your trip. You may want to bring an extra pill pack even if you’re pretty sure you’ll be covered right through your return. Depending where you’re going, it could be hard to get a prescription or to get to a pharmacy if something unexpected happens. If you plan to use your pills or ring to skip your period while you’re away, factor that into your count.");
+    this.emit(':responseReady');
+  },
+        
+        'AlternativeIntent': function () {
+    this.response.speak("There are many hormonal and non-hormonal alternatives to the pill, including the birth control implant, the birth control patch, the birth control shot, the vaginal ring, a cervical cap, condoms, diaphragms, female condoms, IUDs, spermicide, sterilization. Consult a specialist to find the method that's right for you. To get started, you could take Planned Parenthood's quiz called Which birth control method is right for me?");
+    this.emit(':responseReady');
+  },
+  
+    'AMAZON.CancelIntent': function () {
+        this.response.speak("Hope I could help! If you're able to, please consider donating to Planned Parenthood to your comfort level. Just ask Alexa how. Goodbye!");
+        this.emit(':responseReady');
+    },
+    'AMAZON.StopIntent': function () {
+        this.response.speak("Hope I could help! If you're able to, please consider donating to Planned Parenthood to your comfort level. Just ask Alexa how. Goodbye!");
+        this.emit(':responseReady');
+    },
+    
+'AMAZON.HelpIntent': function () {
+        const speechOutput = HELP_MESSAGE;
+        const reprompt = HELP_REPROMPT;
+
+        this.response.speak(speechOutput).listen(reprompt);
+        this.emit(':responseReady');
+    },
+
+'AMAZON.StartOverIntent': function() {
+        this.toIntent('LaunchRequest');
+    }
+
+
 }
 
 exports.handler = function(event, context, callback){
