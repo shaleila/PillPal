@@ -1,0 +1,96 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "pill pal",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": [
+                        "it's okay",
+                        "it's ok",
+                        "cancel",
+                        "Never mind"
+                    ]
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": [
+                        "shut up",
+                        "exit",
+                        "stop"
+                    ]
+                },
+                {
+                    "name": "TypesOfPillsIntent",
+                    "slots": [],
+                    "samples": [
+                        "about types of birth control",
+                        "how many types of birth control pills",
+                        "how many types of pills",
+                        "Is there only one pill",
+                        "can i try another kind of pill",
+                        "can i try a different kind of pill",
+                        "can i try another pill",
+                        "can i try a different pill",
+                        "are there different kinds of pills",
+                        "are there different kinds of birth control pills",
+                        "if there are different kinds of birth control pills",
+                        "if there are different kinds of pills",
+                        "what types of pills there are",
+                        "what types of pills are there",
+                        "what types of birth control pills there are",
+                        "what types of birth control pills are there"
+                    ]
+                },
+                {
+                    "name": "MissedPillIntent",
+                    "slots": [],
+                    "samples": [
+                        "what to do if i missed a pill",
+                        "what to do if i forgot to take a pill",
+                        "what to do if i forgot a pill",
+                        "what to do if i skipped a pill",
+                        "i forgot to take a pill",
+                        "i forgot a pill",
+                        "what happens if i forgot a pill",
+                        "what happens if i skipped a pill",
+                        "what happens if i missed a pill",
+                        "i skipped a pill",
+                        "i missed a pill"
+                    ]
+                },
+                {
+                    "name": "PeriodIntent",
+                    "slots": [],
+                    "samples": [
+                        "how to delay my period",
+                        "how to stop my period",
+                        "how can i stop my period",
+                        "how do i stop my period",
+                        "how do i delay my period",
+                        "how can i delay my period",
+                        "if i can use pills to stop my period",
+                        "if i can use pills to delay my period"
+                    ]
+                },
+                {
+                    "name": "STIIntent",
+                    "slots": [],
+                    "samples": [
+                        "am i protected from sexually transmitted diseases",
+                        "am i protected from STIs",
+                        "does the pill protect against STI",
+                        "does the pill protect against sexually transmitted diseases",
+                        "if the pill protects against sexually transmitted diseases",
+                        "if the pill protects against STIs"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}
