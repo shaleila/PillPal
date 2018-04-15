@@ -14,7 +14,10 @@
                 },
                 {
                     "name": "AMAZON.HelpIntent",
-                    "samples": []
+                    "samples": [
+                        "help me",
+                        "help"
+                    ]
                 },
                 {
                     "name": "AMAZON.StopIntent",
@@ -87,6 +90,129 @@
                         "does the pill protect against sexually transmitted diseases",
                         "if the pill protects against sexually transmitted diseases",
                         "if the pill protects against STIs"
+                    ]
+                },
+                {
+                    "name": "PregnancyDamageIntent",
+                    "slots": [],
+                    "samples": [
+                        "if pills can hurt pregnancy",
+                        "if pills hurt existing pregnancy",
+                        "if pills hurt pregnancy",
+                        "if pills can stop pregnancy",
+                        "if my pills can stop pregnancy",
+                        "can my pills stop pregnancy",
+                        "i am already pregnant",
+                        "can pills stop my pregnancy",
+                        "can pills terminate a pregnancy",
+                        "can pills terminate pregnancy",
+                        "can pills stop a pregnancy",
+                        "if pills can stop a pregnancy",
+                        "if pills can hurt a pregnancy",
+                        "if pills can damage a pregnancy"
+                    ]
+                },
+                {
+                    "name": "GetPregnantIntent",
+                    "slots": [],
+                    "samples": [
+                        "how to try for a baby on the pill",
+                        "how to try for a baby",
+                        "how to get pregnant on the pill",
+                        "how to get pregnant",
+                        "what to do to get pregnant",
+                        "what to do if i want to get pregnant",
+                        "i want to try and get pregnant",
+                        "I want to try for a baby",
+                        "I want to get pregnant"
+                    ]
+                },
+                {
+                    "name": "AntibioticsIntent",
+                    "slots": [],
+                    "samples": [
+                        "what to do about antibiotics",
+                        "what to do with antibiotics",
+                        "what to do when taking an antibiotic",
+                        "what to do when taking antibiotics",
+                        "if antibiotics make the pill less effective",
+                        "if my antiobiotics affects the pill",
+                        "if antibiotics affect the pill",
+                        "what about antibiotics",
+                        "i am on antibiotics",
+                        "will my antibiotic affect the pill",
+                        "do antibiotics affect the pill"
+                    ]
+                },
+                {
+                    "name": "TimezoneIntent",
+                    "slots": [],
+                    "samples": [
+                        "when visiting a place with a different timezone",
+                        "i am traveling",
+                        "i am changing timezones",
+                        "what to do when switching timezones",
+                        "what should i do if i change timezones",
+                        "what should i do when i switch timezones",
+                        "what to do if i change timezones",
+                        "what to do when i change timezones",
+                        "timezone change",
+                        "how to change timezone",
+                        "how to change timezones",
+                        "what to do about timezones",
+                        "what to do if i travel",
+                        "what to do if i'm changing timezones",
+                        "what to do when changing timezones",
+                        "what to do if i'm traveling"
+                    ]
+                },
+                {
+                    "name": "EffectivenessIntent",
+                    "slots": [],
+                    "samples": [
+                        "how effective the pill is",
+                        "if the pill guarantees i will not get pregnant",
+                        "does the pill guarantee i will not get pregnant",
+                        "how effective is the pill",
+                        "how effective is birth control"
+                    ]
+                },
+                {
+                    "name": "OtherPurposesIntent",
+                    "slots": [],
+                    "samples": [
+                        "are pills only for contraception",
+                        "why we use pills",
+                        "why pills exist ",
+                        "what other purposes pills serve"
+                    ]
+                },
+                {
+                    "name": "DebunkMythIntent",
+                    "slots": [],
+                    "samples": [
+                        "to debunk me a myth",
+                        "debunk me a myth",
+                        "to debunk a myth about pills for me",
+                        "debunk a pill myth for me",
+                        "debunk a myth for me",
+                        "debunk",
+                        "debunk a myth",
+                        "to debunk a myth about pill",
+                        "to debunk a pill myth",
+                        "debunk a pill myth",
+                        "to debunk a myth"
+                    ]
+                },
+                {
+                    "name": "AlternativeIntent",
+                    "slots": [],
+                    "samples": [
+                        "about other types of contraceptives",
+                        "what can i take instead of the pill",
+                        "what other types of contraception are there",
+                        "what other forms of contraception",
+                        "i don't want to take the pill"
                     ]
                 }
             ],
