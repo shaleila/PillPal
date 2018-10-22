@@ -4,6 +4,8 @@ var Alexa = require("alexa-sdk");
 
 const HELP_MESSAGE = 'This skill can help answer your questions about birth control pills, and can even debunk myths about birth control pills. Say "Ask Pill Pal", followed by your question. For example, Ask Pill Pal how do i delay my period? You could also try saying, I missed a pill, or, debunk a myth';
 const HELP_REPROMPT = 'What can I help you with?';
+const STOP_MESSAGE = 'Hope I could help! If you are able to, please consider donating to Planned Parenthood to your comfort level. Just ask Alexa how. Goodbye!';
+
 const SKILL_NAME = 'Pill Pal';
 const GET_FACT_MESSAGE = "Here's a myth about birth control: ";
 
@@ -91,16 +93,33 @@ var handlers = {
     this.response.speak("There are many hormonal and non-hormonal alternatives to the pill, including the birth control implant, the birth control patch, the birth control shot, the vaginal ring, a cervical cap, condoms, diaphragms, female condoms, IUDs, spermicide, sterilization. Consult a specialist to find the method that's right for you. To get started, you could take Planned Parenthood's quiz called Which birth control method is right for me?");
     this.emit(':responseReady');
   },
-  
-    'AMAZON.CancelIntent': function () {
-        this.response.speak("Hope I could help! If you're able to, please consider donating to Planned Parenthood to your comfort level. Just ask Alexa how. Goodbye!");
-        this.emit(':responseReady');
-    },
-    'AMAZON.StopIntent': function () {
-        this.response.speak("Hope I could help! If you're able to, please consider donating to Planned Parenthood to your comfort level. Just ask Alexa how. Goodbye!");
-        this.emit(':responseReady');
-    },
-    
+ 
+ 
+ 
+'AMAZON.CancelIntent': function () {
+    this.emit('SessionEndRequest');
+},
+
+'AMAZON.StopIntent': function () {
+    this.emit('SessionEndRequest');
+},
+
+'EndSessionIntent': function () {
+    this.emit('SessionEndRequest');
+},
+
+
+'SessionEndRequest': function() {
+    const speechOutput = STOP_MESSAGE;
+
+    this.emit(':tell', speechOutput);
+},
+
+'Unhandled': function () {
+     const speechOutput = STOP_MESSAGE;
+     this.emit(':tell', speechOutput);
+},
+
 'AMAZON.HelpIntent': function () {
         const speechOutput = HELP_MESSAGE;
         const reprompt = HELP_REPROMPT;
