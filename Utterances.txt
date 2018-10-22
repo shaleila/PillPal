@@ -6,6 +6,7 @@
                 {
                     "name": "AMAZON.CancelIntent",
                     "samples": [
+                        "exit",
                         "it's okay",
                         "it's ok",
                         "cancel",
@@ -22,8 +23,8 @@
                 {
                     "name": "AMAZON.StopIntent",
                     "samples": [
-                        "shut up",
                         "exit",
+                        "shut up",
                         "stop"
                     ]
                 },
@@ -213,6 +214,16 @@
                         "what other types of contraception are there",
                         "what other forms of contraception",
                         "i don't want to take the pill"
+                    ]
+                },
+                {
+                    "name": "EndSessionIntent",
+                    "slots": [],
+                    "samples": [
+                        "stop",
+                        "quit",
+                        "exit",
+                        "cancel"
                     ]
                 }
             ],
